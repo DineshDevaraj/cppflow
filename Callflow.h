@@ -18,24 +18,8 @@
 #include <string.h>
 #include <signal.h>
 
-class Callflow
+struct Callflow
 {
-   struct Node
-   {
-      int line;
-      int level;
-      Node *next;
-      const char *szFunc;
-      const char *szFile;
-   };
-
-   static int level;
-   static int max_level;
-   static Node *base, *last;
-   static void ShutCallflow(int sig);
-   static int SslExistAtLevel(int level, Node *node);
-
-   public :
    Callflow();
    Callflow(int line, const char *szFunc, const char *szFile);
    ~Callflow();
