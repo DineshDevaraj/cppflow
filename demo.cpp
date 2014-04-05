@@ -51,6 +51,8 @@ int main()
    Function14();
    Function15();
 
+   Callflow cf;
+
    puts((char *)0);
    return 0;
 }

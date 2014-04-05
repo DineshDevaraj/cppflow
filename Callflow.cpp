@@ -85,7 +85,8 @@ void ShutCallflow(int sig)
 
 Callflow::Callflow()
 {
-   g_last = g_base = new Node;
+   static Node node;
+   g_last = g_base = &node;
    signal(SIGSEGV, ShutCallflow);
 }
 
