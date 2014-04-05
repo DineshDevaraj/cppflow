@@ -6,7 +6,7 @@
  * Created     : 05 Apr 2014 - Sat
  * Updated     : 05 Apr 2014 - Sat
  *
- * Licence     : Refer the licence file
+ * Licence     : Refer the license file
  *
  **/
 
