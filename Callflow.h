@@ -30,8 +30,10 @@ class Callflow
    };
 
    static int level;
+   static int max_level;
    static Node *base, *last;
    static void ShutCallflow(int sig);
+   static int SslExistAtLevel(int level, Node *node);
 
    public :
    Callflow();

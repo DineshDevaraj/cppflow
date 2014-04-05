@@ -20,6 +20,7 @@ void Function21(); void Function22(); void Function23();
 void Function24(); void Function25();
 
 void Function31(); void Function32(); void Function33();
+void Function34(); void Function35();
 
 /********** Function defenition **********/
 void Function11() { _trace_callflow_ Function21(); Function22(); Function23(); Function24(); Function25(); }
@@ -28,14 +29,17 @@ void Function13() { _trace_callflow_ }
 void Function14() { _trace_callflow_ }
 void Function15() { _trace_callflow_ }
 
-void Function21() { _trace_callflow_  Function31(); Function32(); }
-void Function22() { _trace_callflow_  Function31(); Function32(); }
+void Function21() { _trace_callflow_  Function31(); Function32(); Function22(); } 
+void Function22() { _trace_callflow_  Function31(); Function32(); Function33(); Function34(); Function35(); }
 void Function23() { _trace_callflow_ }
 void Function24() { _trace_callflow_ }
 void Function25() { _trace_callflow_ }
 
 void Function31() { _trace_callflow_ }
 void Function32() { _trace_callflow_ }
+void Function33() { _trace_callflow_ }
+void Function34() { _trace_callflow_ }
+void Function35() { _trace_callflow_ }
 
 int main()
 {
@@ -49,5 +53,4 @@ int main()
 
    puts((char *)0);
    return 0;
-
 }
