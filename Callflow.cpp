@@ -2,10 +2,6 @@
 /**
  * 
  * Author      : D.Dinesh
- *
- * Created     : 05 Apr 2014 - Sat
- * Updated     : 05 Apr 2014 - Sat
- *
  * Licence     : Refer the license file
  *
  **/
@@ -21,8 +17,6 @@ struct Node
    const char *m_szFile;
 };
 
-Callflow callflow;
-
 static int g_level = 0;
 static Node *g_base = 0;
 static Node *g_last = 0;
@@ -30,8 +24,16 @@ static int g_max_level = 0;
 
 static void ShutCallflow(int sig);
 static int SslExistAtLevel(int level, Node *node);
+static void InitCallflow() __attribute__((constructor));
 
-int SslExistAtLevel(int level, Node *node)
+static void InitCallflow()
+{
+   static Node node;
+   g_last = g_base = &node;
+   signal(SIGSEGV, ShutCallflow);
+}
+
+static int SslExistAtLevel(int level, Node *node)
 {
    for(node = node->m_next; node; node = node->m_next)
       if(node->m_level < level) return 0;
@@ -39,7 +41,7 @@ int SslExistAtLevel(int level, Node *node)
    return 0;
 }
 
-void ShutCallflow(int sig)
+static void ShutCallflow(int sig)
 {
    Node *node = g_base->m_next;
    bool *pSsl = new bool[g_max_level - 1]; /* succeeding sibling */
@@ -81,13 +83,6 @@ void ShutCallflow(int sig)
    }
 
    exit(0);
-}
-
-Callflow::Callflow()
-{
-   static Node node;
-   g_last = g_base = &node;
-   signal(SIGSEGV, ShutCallflow);
 }
 
 Callflow::Callflow(int line, const char *szFunc, const char *szFile)

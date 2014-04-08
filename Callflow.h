@@ -2,10 +2,6 @@
 /**
  * 
  * Author      : D.Dinesh
- *
- * Created     : 05 Apr 2014 - Sat
- * Updated     : 05 Apr 2014 - Sat
- *
  * Licence     : Refer the license file
  *
  **/
@@ -20,7 +16,6 @@
 
 struct Callflow
 {
-   Callflow();
    Callflow(int line, const char *szFunc, const char *szFile);
    ~Callflow();
 };
